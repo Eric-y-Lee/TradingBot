@@ -37,15 +37,7 @@ print(f'Today\'s portfolio balance change: ${balance_change}')
 # market_order = trading_client.submit_order(
 #                 order_data=market_order_data
 #             )
-req = MarketOrderRequest(
-    symbol = 'BTC/USD',
-    # qty = 0.001,
-    notional = 1.00,
-    side = OrderSide.SELL,
-    # type = OrderType.MARKET,
-    time_in_force = TimeInForce.GTC,
-)
-res = trading_client.submit_order(order_data = req)
+
 
 # # Get a list of all of our positions.
 portfolio = trading_client.get_all_positions()
@@ -78,17 +70,5 @@ else:
             })
     print(tabulate(df, headers = 'keys', tablefmt='psql', showindex = False))
 
-trading_client.cancel_orders()
-
-"""
-    What to do:
-        I need to use Web socket from the Alpaca API to get the real-time price of the stock
-        Then use the Doji algorithm to buy and sell the stock. 
-        I'm thinking using the minute bar and then calculate when to sell and buy
-
-        Eventually, I think I can create an AI model to train with a lot of data of a specific stock 
-        so that depending on the factors, it will take the most profit. 
-        Such as like on this volume and MCD and RSI line, it will sell and buy. 
-        This will be automated.
-"""
+# trading_client.cancel_orders()
     
